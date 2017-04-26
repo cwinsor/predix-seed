@@ -90,23 +90,23 @@
           <!-- flame temperature sensor -->
           <app-route
             route="[[_route]]"
-            pattern="/sensorflametemperature"
-            active="{{_sensorFlameTemperatureActive}}">
+            pattern="/sensorflametemp"
+            active="{{_sensorFlametempActive}}">
           </app-route>
           <px-view
-            active="[[_sensorFlameTemperatureActive]]"
-            element-href="/elements/views/sensor-flame-temperature-view.html">
+            active="[[_sensorFlametempActive]]"
+            element-href="/elements/views/sensor-flametemp-view.html">
           </px-view>
 
           <!-- hood temperature sensor -->
           <app-route
             route="[[_route]]"
-            pattern="/sensorhoodtemperature"
-            active="{{_sensorHoodTemperatureActive}}">
+            pattern="/sensorhoodtemp"
+            active="{{_sensorHoodtempActive}}">
           </app-route>
           <px-view
-            active="[[_sensorHoodTemperatureActive]]"
-            element-href="/elements/views/sensor-hood-temperature-view.html">
+            active="[[_sensorHoodtempActive]]"
+            element-href="/elements/views/sensor-hoodtemp-view.html">
           </px-view>
 
           <!-- sound sensor -->
@@ -203,13 +203,13 @@
             //Flame Temperature
             ,{
               "label": "Flame Temperature",
-              "path": "/sensorflametemperature",
+              "path": "/sensorflametemp",
               "icon": "fa-line-chart"
             }
             //Hood Temperature
             ,{
               "label": "Hood Temperature",
-              "path": "/sensorhoodtemperature",
+              "path": "/sensorhoodtemp",
               "icon": "fa-line-chart"
             }
             //Sound Emission

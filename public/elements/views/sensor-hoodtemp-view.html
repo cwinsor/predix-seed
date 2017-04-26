@@ -3,7 +3,7 @@
 <link rel="import" href="../../bower_components/px-vis-timeseries/px-vis-timeseries.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 
-<dom-module id="sensor-hood-temperature-view">
+<dom-module id="sensor-hoodtemp-view">
   <template>
     
     <px-card header-text="Hood Temperature">
@@ -16,7 +16,7 @@
          register-location="none"
          include-all-series
          y-axis-config='{"title": "degC"}'
-         series-config='{"sensor-hood-temperature": {
+         series-config='{"sensor-hoodtemp": {
          "type":"line",
          "x": "x",
          "y": "y",
@@ -40,7 +40,7 @@
 </template>
 <script>
   Polymer({
-  is: 'sensor-hood-temperature-view',
+  is: 'sensor-hoodtemp-view',
   properties: {
   tsChartData: {
   type: Array
