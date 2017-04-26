@@ -14,6 +14,9 @@
     "sass",
     "tutorials"
   ],
+  "resolutions": {
+    "px-dropdown": "^3.1.0"
+  },
   "dependencies": {
     "es6-promise": "^3.3.1",
     "lodash": "~4.16.2",
