@@ -1,0 +1,77 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/px-card/px-card.html">
+<link rel="import" href="../../bower_components/px-vis-timeseries/px-vis-timeseries.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="sensor-light-view">
+  <template>
+    
+    <px-card header-text="Light Emission">
+      
+      <px-vis-timeseries
+         width="800"
+         height="300"
+         prevent-resize="true"
+         enable-tooltip="true"
+         register-location="none"
+         include-all-series
+         y-axis-config='{"title": "Lumen"}'
+         series-config='{"sensor-light": {
+         "type":"line",
+         "x": "x",
+         "y": "y",
+         "yAxisUnit": "Lumen"
+         }}'
+         selection-type= "xy"
+         chart-data={{tsChartData}}
+	 </px-vis-timeseries>
+
+<iron-ajax
+   url="/predix-api/predix-timeseries/v1/datapoints"
+   id="tsQueryElement"
+   body="{{timeseriesQuery}}"
+   last-response="{{rawTsData}}"
+   method="POST"
+   content-type="application/json"
+   auto>
+</iron-ajax>
+
+</px-card>
+</template>
+<script>
+  Polymer({
+  is: 'sensor-light-view',
+  properties: {
+  tsChartData: {
+  type: Array
+  },
+  rawTsData: {
+  type: Object,
+  observer: '_formatDataForChart'
+  },
+  timeseriesQuery: {
+  type: Object,
+  value: function() {
+  return {
+  "start": "1y-ago",
+  "tags": [
+  {
+  "name": "Light:CWINSOR-111",
+  }
+  ]
+  };
+  }
+  }
+  },
+  
+  _formatDataForChart: function(raw) {
+  var series = [];
+  var datapoints = raw.tags[0].results[0].values || raw.tags[0].results[0].datapoints;
+  datapoints.forEach(function(point) {
+  series.push({x: point[0], y: point[1]});
+  });
+  this.tsChartData = series;
+  }
+  });
+</script>
+</dom-module>
