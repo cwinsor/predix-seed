@@ -54,13 +54,13 @@
           <!-- /dashboards route and view -->
           <app-route
             route="[[_route]]"
-            pattern="/dashboards"
-            active="{{_dashboardsActive}}">
+            pattern="/maindash"
+            active="{{_maindashActive}}">
           </app-route>
 
           <px-view
-            active="[[_dashboardsActive]]"
-            element-href="/elements/views/dashboards-view.html">
+            active="[[_maindashActive]]"
+            element-href="/elements/views/maindash-view.html">
           </px-view>
 
           <!-- /blankpage route and view -->
@@ -176,15 +176,13 @@
         navItems: {
           type: Array,
           value: function() {
-            return [{
-              "label": "Dashboards",
-              "path": "/dashboards",
+            return [
+            {
+              "label": "Dashboard",
+              "path": "/maindash",
               "icon": "fa-tachometer"
-            }, {
-              "label": "Blank Page",
-              "path": "/blankpage",
-              "icon": "fa-file"
             }
+         
             //Uncomment this block to show the Simple Asset navigation item on the menu.
             /* // asset-nav-item
             ,{
