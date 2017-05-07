@@ -50,11 +50,12 @@ app.use(cookieParser('predixsample'));
 /***************
 logger middleware
 *****************/
-function logger(req,res,next){
-  console.log("zona - ", new Date(), req.method, req.url);
-  next();
-}
-app.use(logger);
+//function logger(req,res,next){
+//  console.log("zona - ", new Date(), req.method, req.url);
+//  next();
+//}
+//app.use(logger);
+
 
 // Initializing default session store
 // *** Use this in-memory session store for development only. Use redis for prod. **

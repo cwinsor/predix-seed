@@ -51,51 +51,15 @@
             use-hash-as-path>
           </app-location>
 
-          <!-- /dashboards route and view -->
+          <!-- /maindash route and view -->
           <app-route
             route="[[_route]]"
             pattern="/maindash"
             active="{{_maindashActive}}">
           </app-route>
-
           <px-view
             active="[[_maindashActive]]"
             element-href="/elements/views/maindash-view.html">
-          </px-view>
-
-          <!-- /blankpage route and view -->
-          <app-route
-            route="[[_route]]"
-            pattern="/blankpage"
-            active="{{_blankpageActive}}">
-          </app-route>
-          <px-view
-            active="[[_blankpageActive]]"
-            element-href="/elements/views/blankpage-view.html">
-          </px-view>
-
-          <!-- /winddata route and view -->
-          <app-route
-            route="[[_route]]"
-            pattern="/winddata"
-            active="{{_winddataActive}}">
-          </app-route>
-          <px-view
-            active="[[_winddataActive]]"
-            element-href="/elements/views/winddata-view.html">
-          </px-view>
-
-
-
-          <!-- flame temperature sensor -->
-          <app-route
-            route="[[_route]]"
-            pattern="/sensorflametemp"
-            active="{{_sensorFlametempActive}}">
-          </app-route>
-          <px-view
-            active="[[_sensorFlametempActive]]"
-            element-href="/elements/views/sensor-flametemp-view.html">
           </px-view>
 
           <!-- hood temperature sensor -->
@@ -130,18 +94,6 @@
             active="[[_sensorLightActive]]"
             element-href="/elements/views/sensor-light-view.html">
           </px-view>
-
-          <!-- /simple-asset route and view -->
-          <app-route
-            route="[[_route]]"
-            pattern="/simple-asset"
-            active="{{_simple-assetActive}}">
-          </app-route>
-          <px-view
-            active="[[_simple-assetActive]]"
-            element-href="/elements/views/simple-asset-view.html">
-          </px-view>
-
         </main>
 
       </div>
@@ -151,131 +103,107 @@
 
   </template>
   <script>
-    Polymer({
-      is: 'seed-app',
+   Polymer({
+     is: 'seed-app',
 
-      properties: {
+     properties: {
 
-        routesActive: {
-          type: Boolean,
-          value: false
-        },
+       routesActive: {
+         type: Boolean,
+         value: false
+       },
 
-        //Global application object
-        global: {
-          type: Object,
-          value: function() {
-            return {
-              version: '1.0',
-              name: 'Predix UI Seed',
-              session: {}
-            }
-          }
-        },
+       //Global application object
+       global: {
+         type: Object,
+         value: function() {
+           return {
+             version: '1.0',
+             name: 'Predix UI Seed',
+             session: {}
+           }
+         }
+       },
 
-        navItems: {
-          type: Array,
-          value: function() {
-            return [
-            {
-              "label": "Dashboard",
-              "path": "/maindash",
-              "icon": "fa-tachometer"
-            }
-         
-            //Uncomment this block to show the Simple Asset navigation item on the menu.
-            /* // asset-nav-item
-            ,{
-              "label": "Simple Asset",
-              "path": "/simple-asset",
-              "icon": "fa-sitemap"
-            }
-            // end asset-nav-item */
-            //Uncomment this block to show the Wind Data navigation item on the menu.
-            ,{
-              "label": "Wind Data",
-              "path": "/winddata",
-              "icon": "fa-line-chart"
-            }
-            
-            //Flame Temperature
-            ,{
-              "label": "Flame Temperature",
-              "path": "/sensorflametemp",
-              "icon": "fa-line-chart"
-            }
-            //Hood Temperature
-            ,{
-              "label": "Hood Temperature",
-              "path": "/sensorhoodtemp",
-              "icon": "fa-line-chart"
-            }
-            //Sound Emission
-            ,{
-              "label": "Sound Emission",
-              "path": "/sensorsound",
-              "icon": "fa-line-chart"
-            }
-            //Light Emission
-            ,{
-              "label": "Light Emission",
-              "path": "/sensorlight",
-              "icon": "fa-line-chart"
-            }
+       navItems: {
+         type: Array,
+         value: function() {
+           return [
+             //Main dashboard
+              {
+               "label": "Dashboard",
+               "path": "/maindash",
+               "icon": "fa-tachometer"
+             }
+             //Hood Temperature
+             ,{
+               "label": "Hood Temperature",
+               "path": "/sensorhoodtemp",
+               "icon": "fa-line-chart"
+             }
+             //Sound Emission
+             ,{
+               "label": "Sound Emission",
+               "path": "/sensorsound",
+               "icon": "fa-line-chart"
+             }
+             //Light Emission
+             ,{
+               "label": "Light Emission",
+               "path": "/sensorlight",
+               "icon": "fa-line-chart"
+             }
+           ]
+         }
+       },
 
-            
+       footerLinks: {
+         type: Array,
+         value: function() {
+           return [{
+             "label": "Privacy",
+             "href": "#/maindash",
+             "target": "_blank"
+           }, {
+             "label": "Terms",
+             "href": "#/maindash",
+             "target": "_blank"
+           }, {
+             "label": "Contact",
+             "href": "#/maindash",
+             "target": "_blank"
+           }, {
+             "label": "Accessibility",
+             "href": "#/maindash",
+             "target": "_blank"
+           }, {
+             "label": "Cookies",
+             "href": "#/maindash",
+             "target": "_blank"
+           }
+           ]
+         }
+       },
 
-            ]
-          }
-        },
+       // Sets app default base URL for client-side routing
+       pathPrefix: {
+         type: String,
+         value: '#'
+       }
+     },
 
-        footerLinks: {
-          type: Array,
-          value: function() {
-            return [{
-              "label": "Privacy",
-              "href": "#/dashboards",
-              "target": "_blank"
-            }, {
-              "label": "Terms",
-              "href": "#/dashboards",
-              "target": "_blank"
-            }, {
-              "label": "Contact",
-              "href": "#/dashboards",
-              "target": "_blank"
-            }, {
-              "label": "Accessibility",
-              "href": "#/dashboards",
-              "target": "_blank"
-            }, {
-              "label": "Cookies",
-              "href": "#/dashboards",
-              "target": "_blank"
-            }
-          ]
-          }
-        },
+     ready: function(){
+       this._checkForDefaultRoute();
+     },
 
-        // Sets app default base URL for client-side routing
-        pathPrefix: {
-          type: String,
-          value: '#'
-        }
-      },
+     _checkForDefaultRoute: function() {
+       // set default route to /maindash
+       var l = window.location;
+       if((l.hash === "#/" || l.hash === "") && l.pathname === "/") {
+         l.hash = "/maindash";
+       }
+     }
 
-      ready: function(){
-        this._checkForDefaultRoute();
-      },
-
-      _checkForDefaultRoute: function() {
-        // set default route to /dashboards
-        var l = window.location;
-        if((l.hash === "#/" || l.hash === "") && l.pathname === "/") {
-          l.hash = "/dashboards";
-        }
-      }
-
-    });
+   });
   </script>
 </dom-module>
