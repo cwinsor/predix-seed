@@ -16,7 +16,9 @@
   ],
   "resolutions": {
     "px-dropdown": "^3.1.0",
-    "px-card": "^0.7.0"
+    "px-card": "^0.7.0",
+    "px-datetime-common": "^0.8.0"
+
   },
   "dependencies": {
     "es6-promise": "^3.3.1",
